@@ -79,7 +79,7 @@
     <main class="py-4">
         @if( Session::get('status') )
 
-            @if(Session::get('status_class'))
+            @if( Session::get('status_class'))
                 <div class="alert {{ Session::get('status_class') }}">
                     {{ Session::get('status') }}
                 </div>
