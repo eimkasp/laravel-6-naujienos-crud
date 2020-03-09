@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 // Jei naudojame Auth klase, reikai parasyti:
 
 use Auth;
+use Illuminate\Support\Facades\Session;
+
 class CommentsController extends Controller
 {
     /**
@@ -48,6 +50,15 @@ class CommentsController extends Controller
 //		$comment->user_id = Auth::id();
 
 		$comment->save();
+
+
+
+		// avaizduoti sesijos zinute viena karta galime taip:
+		//$request->session()->flash('status', 'Komentaras sekmingai pridetas!');
+
+		// arba taip:
+		Session::flash('status', 'Komentaras sekmingai pridetas!');
+
 
 		// graziname i pries tai aplankyta puslapi
 		return redirect()->back();

@@ -23,7 +23,7 @@
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Naujienos autrius cia bus</li>
-                                    <li class="list-group-item">Komentaru skaicius</li>
+                                    <li class="list-group-item">Komentaru skaicius: {{ $item->comments->count() }}</li>
                                 </ul>
                                 <div class="card-body">
                                     <a href="#" class="card-link">Redaguoti link</a>
