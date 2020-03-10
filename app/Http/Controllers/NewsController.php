@@ -46,6 +46,12 @@ class NewsController extends Controller {
 	 */
 	public function store( Request $request ) {
 		//
+
+		$request->validate([
+			'title' => 'required',
+			'content' => 'required|min:10',
+		]);
+
 		$newsItem = new NewsItem();
 		$newsItem->title = $request->input('title');
 		$newsItem->content = $request->input('content');
