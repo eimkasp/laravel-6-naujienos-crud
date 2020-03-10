@@ -6,7 +6,8 @@
             <div class="col-sm-12">
                 <h1> Sukurti naujiena </h1>
 
-                <form method="post" action="{{ route() }}">
+                <form method="post" action="{{ route('news.store') }}">
+                    @csrf
                     <div>
                         <input type="text" name="title" class="form-control" />
                     </div>

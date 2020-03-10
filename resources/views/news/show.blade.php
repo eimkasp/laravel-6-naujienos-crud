@@ -17,7 +17,9 @@
                                 <p class="card-text">{{ $newsItem->content }}</p>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Naujienos autrius cia bus</li>
+                                <li class="list-group-item">
+                                    Autorius: {{ $newsItem->author->name }}
+                                </li>
                                 <li class="list-group-item">Komentaru skaicius</li>
                             </ul>
                             <div class="card-body">

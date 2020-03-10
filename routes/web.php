@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'NewsController@index');
 
 Auth::routes();
 
@@ -23,11 +21,21 @@ Route::get('/home', 'HomeController@index')
 	->name('home')
 	->middleware('auth');
 
+Route::get('/news/create', 'NewsController@create')
+	->middleware('auth')
+	->name('news.create');
+
+Route::get('/news/{id}', 'NewsController@show')->name('news.show');
+Route::get('/news', 'NewsController@index')->name('news.index');
+
+
+
+Route::post('/news/create', 'NewsController@store')->name('news.store');
+
 
 Route::resource('news', 'NewsController');
 
-Route::get('/news/create', 'NewsController@create')->name('news.create');
-Route::post('/news/create', 'NewsController@store')->name('news.store');
+
 
 Route::resource('comments', 'CommentsController');
 //Route::get('news/stats', 'NewsController@stats');

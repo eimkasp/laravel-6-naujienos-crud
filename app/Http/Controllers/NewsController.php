@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Session;
 use Auth;
 
 class NewsController extends Controller {
+
+
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -48,12 +51,19 @@ class NewsController extends Controller {
 		$newsItem->content = $request->input('content');
 		$newsItem->image = "";
 		// sita eilute grazina prisijungusio vartotojo ID
-		// jei naudoju Auth::user(), tai virsui nepamirsti parasyti use Auth;
+		// jei naudoju Auth::user(), tai Failo Viršuje nepamirsti parasyti: use Auth
 		$newsItem->user_id = Auth::user()->id;
 
 		$newsItem->save();
 
-		return redirect()->route('news.show', $newsItem->id);
+
+		// Failo Viršuje butinai prideti:
+	    // use Illuminate\Support\Facades\Session;
+		Session::flash('status', 'Sekmingai sukurta naujiena!');
+		Session::flash('status_class', 'alert-success');
+
+		// nukreipiame vartotoja i musu sukurta naujiena
+		return redirect()->route('news.create');
 	}
 
 	/**
