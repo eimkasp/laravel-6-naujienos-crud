@@ -25,5 +25,9 @@ Route::get('/home', 'HomeController@index')
 
 
 Route::resource('news', 'NewsController');
+
+Route::get('/news/create', 'NewsController@create')->name('news.create');
+Route::post('/news/create', 'NewsController@store')->name('news.store');
+
 Route::resource('comments', 'CommentsController');
 //Route::get('news/stats', 'NewsController@stats');

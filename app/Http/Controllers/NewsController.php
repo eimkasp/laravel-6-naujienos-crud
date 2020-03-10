@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\NewsItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class NewsController extends Controller {
 	/**
@@ -29,6 +30,8 @@ class NewsController extends Controller {
 	 */
 	public function create() {
 		//
+
+		return view('news.create');
 	}
 
 	/**
@@ -40,6 +43,17 @@ class NewsController extends Controller {
 	 */
 	public function store( Request $request ) {
 		//
+		$newsItem = new NewsItem();
+		$newsItem->title = $request->input('title');
+		$newsItem->content = $request->input('content');
+		$newsItem->image = "";
+		// sita eilute grazina prisijungusio vartotojo ID
+		// jei naudoju Auth::user(), tai virsui nepamirsti parasyti use Auth;
+		$newsItem->user_id = Auth::user()->id;
+
+		$newsItem->save();
+
+		return redirect()->route('news.show', $newsItem->id);
 	}
 
 	/**
