@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsRequest;
 use App\NewsItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -44,13 +45,17 @@ class NewsController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store( Request $request ) {
-		//
 
-		$request->validate([
-			'title' => 'required',
-			'content' => 'required|min:10',
-		]);
+	/* jei naudojame NewsRequest klase butinai virsuje prisideti
+	use App\Http\Requests\NewsRequest;
+	*/
+	public function store( NewsRequest $request ) {
+		//
+		/*$messages = [
+			'required' => 'Laukelis :attribute yra privalomas'
+		];*/
+
+
 
 		$newsItem = new NewsItem();
 		$newsItem->title = $request->input('title');
@@ -95,6 +100,8 @@ class NewsController extends Controller {
 	 */
 	public function edit( $id ) {
 		//
+
+
 	}
 
 	/**
@@ -105,8 +112,9 @@ class NewsController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update( Request $request, $id ) {
+	public function update( NewsRequest $request, $id ) {
 		//
+
 	}
 
 	/**
